@@ -43,26 +43,26 @@ class Storage < Scraptownhall
 
   # save_as_csv - Instance method storing the array passed as a parameter into the named CSV file
   def save_as_csv(my_tab_of_hash, my_csv_filename)
-    tmp_line = ""
+    tmp_content = ""
     tmp_count = 0
     puts
     puts "Saving scrapped content into a CSV file:"
     puts "  > Searching for backup file."
     if File.exists?(my_csv_filename)
       puts "  > File '#{my_csv_filename}' exists already - Overwriting it."
-      my_tab_of_hash.each do |key,val|
-        tmp_line = "#{key},#{val}\n"
-        File.write(my_csv_filename, tmp_line)
+      my_tab_of_hash.each do |hash| 
+        tmp_content += "'#{hash.keys[0]}','#{hash[hash.keys[0]]}'\n"
         tmp_count += 1
       end
+      File.write(my_csv_filename, tmp_content)
     else
       puts "  > File '#{my_csv_filename}' does not exist - Creating and opening it in R/W mode."
       tmp_file = File.open(my_csv_filename, "w")
-      my_tab_of_hash.each do |key, val|
-        tmp_line = "#{key},#{val}\n"
-        tmp_file.write(tmp_line)
+      my_tab_of_hash.each do |hash|
+        tmp_content += "'#{hash.keys[0]}','#{hash[hash.keys[0]]}'\n"
         tmp_count += 1
       end
+      tmp_file.write(tmp_content)
       tmp_file.close
       puts "  > Closing file."
     end
