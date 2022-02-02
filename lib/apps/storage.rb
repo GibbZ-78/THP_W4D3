@@ -70,10 +70,41 @@ class Storage < Scraptownhall
     puts
   end
 
+  
+  # OLD SHIT - THP pedagogical resources being, as (too) often, largely obsolete
   # save_as_spreadsheet - Instance method storing the array passed as a parameter into the named (existing) Google spreadsheet on gDrive
-  def save_as_spreadsheet(my_tab_of_hash, my_spreadsheet_filename)
-    # session = GoogleDrive::Session.from_config("config.json")
+  def save_as_spreadsheet(my_tab_of_hash, my_spreadsheet_key)
+    tmp_line_pointer = 1
+    tmp_count = 0
+    puts
+    puts "Saving scrapped content into a Google spreadsheet:"
+    puts "  > Opening gDrive session."
+    my_gdrive_session = GoogleDrive::Session.from_config("private/config_old.json")
+    puts "  > Accessing existing spreadsheet by 'key identifier'."
+    my_worksheet = my_gdrive_session.spreadsheet_by_key(my_spreadsheet_key).worksheets[0]
+    puts "  > Parsing array of hashes and writing key into 'A*' cell and value into 'B*' cell."
+    my_tab_of_hash.each do |hash|
+      my_worksheet[tmp_line_pointer,1] = hash.keys[0]
+      my_worksheet[tmp_line_pointer,2] = hash[hash.keys[0]]
+      tmp_line_pointer += 1
+      tmp_count += 1
+    end
+    puts "  > #{tmp_count} lines written into the spreadsheet."
+    my_worksheet.save
+    puts "  > Saving spreadsheet."
+    my_worksheet.reload
+    puts "  > Reloading spreadsheet to refresh content brought by other simultaneous users."
   end
+
+  # OOB_URI = "urn:ietf:wg:oauth:2.0:oob".freeze
+  # APPLICATION_NAME = "Google Sheets API Ruby Quickstart".freeze
+  # CREDENTIALS_PATH = "credentials.json".freeze
+  # # The file token.yaml stores the user's access and refresh tokens, and is
+  # # created automatically when the authorization flow completes for the first
+  # # time.
+  # TOKEN_PATH = "token.yaml".freeze
+  # SCOPE = Google::Apis::SheetsV4::AUTH_SPREADSHEETS_READONLY
+
 
   # read_from_json - Instance method reading a JSON file, then translating and returning it into the array of hash of a Storage object
   def read_from_json(my_json_filename)

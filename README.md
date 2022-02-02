@@ -10,12 +10,12 @@
 - Ai instancié une arborescence Rspec mais n'ai pas utilisée la gem car tests unitaires sans intérêt à ce niveau d'exercice
 - Pas d'utilisation de Rubocop : on peut écrire du code à peu près propre / normé sans se faire Bigbrotherer, que diable :wink:!
 - Pas d'utilisation de Pry : franchement, vu le nombre de ligne des programmes, pas utile d'avoir une exécution pas à pas & Co...
+- La sauvegarde du tableau de hashs dans une feuille de calcul sur Google Drive ne fonctionne pas... Problème (d'obsolescence ?) avec la gem 'google_drive'...
   
 ### Table of content
 - app.rb - Programme principal
 - lib/apps/scraptownhall.rb - Bascule en "class" d'un programme précédent utilisant la gem "nokogiri"
-- [to be completed]
-- [to be completed]
+- lib/apps/storage.rb - Spécialisation de Scraptownhall qui permet de stocker les résultats scrappés dans un CSV, un JSON et (pas encore) une feuille de calcul Google spreadsheet sur un gDrive de test.
 - README.md - Le bla bla que tu es en train de lire et jusqu'au bout a priori... Belle endurance / patience !  
 
 ### How to
