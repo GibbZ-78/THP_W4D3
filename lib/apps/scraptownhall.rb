@@ -2,7 +2,7 @@
 # scraptownhall.rb - Coded with love by JBV for THP "Développeur" (Hiver 2022)
 
 # Useful includes
-# NONE thanks to 'Bundler'
+# NONE! Thanks to 'Bundler'
 
 # Scraptownhall - Class scrapping the mail address of each townhall of the "Vald d'Oise" state
 class Scraptownhall

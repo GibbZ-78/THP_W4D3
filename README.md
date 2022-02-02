@@ -13,6 +13,7 @@
   
 ### Table of content
 - app.rb - Programme principal
+- lib/apps/scraptownhall.rb - Bascule en "class" d'un programme précédent utilisant la gem "nokogiri"
 - [to be completed]
 - [to be completed]
 - README.md - Le bla bla que tu es en train de lire et jusqu'au bout a priori... Belle endurance / patience !  
