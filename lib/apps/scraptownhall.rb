@@ -39,14 +39,13 @@ class Scraptownhall
     print "Building hash from gathered names and mails"
     print "  > Progress"
     # Cycling through the tab of cities then building a table of {name, mail}
-    for i in 0...my_townhall_name.length do
+    for i in 0...self.my_townhall_name.length do
       my_townhall_hash = Hash.new
-      my_townhall_hash[my_townhall_name[i]] = my_townhall_mail[i] # On pourrait transformer les clés String en Symbols
+      my_townhall_hash[self.my_townhall_name[i]] = self.my_townhall_mail[i] # On pourrait transformer les clés String en Symbols
       self.my_townhall_tab.push(my_townhall_hash)
       print "."
     end
     puts
-    return my_townhall_tab
   end
 
   private
