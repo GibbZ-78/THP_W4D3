@@ -80,6 +80,7 @@ class Storage < Scraptownhall
     puts "Saving scrapped content into a Google spreadsheet:"
     puts "  > Opening gDrive session."
     my_gdrive_session = GoogleDrive::Session.from_config("private/config_old.json")
+    my_gdrive_session.nil? ? (puts "pas connecté") : (puts "connecté")
     puts "  > Accessing existing spreadsheet by 'key identifier'."
     my_worksheet = my_gdrive_session.spreadsheet_by_key(my_spreadsheet_key).worksheets[0]
     puts "  > Parsing array of hashes and writing key into 'A*' cell and value into 'B*' cell."
